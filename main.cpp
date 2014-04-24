@@ -44,6 +44,7 @@ GLdouble cylinderRadius = 0.2;
 GLint resolution = 100;
 GLint slices = resolution, stacks = resolution;
 
+
 //Viewer options (GluLookAt)
 float fovy = 60.0, aspect = 1.0, zNear = 1.0, zFar = 100.0;
 
@@ -58,13 +59,20 @@ GLfloat oxygen[3] =		{1.0, 0.0, 0.0};	// (O - Red)
 GLfloat nitrogen[3] =	{0.0, 0.0, 1.0};	// (N - Blue)
 GLfloat phosphate[3] =	{1.0, 0.5, 0.0};	// (P - Orange)
 GLfloat carbon[3] =		{0.5, 0.5, 0.5};	// (C - Grey)
-GLfloat hydrogen[3] =	{1.0, 1.0, 1.0};	// (H - White)
+GLfloat hydrogen[3] =	{0.0, 1.0, 0.0};	// (H - Green)
 GLfloat white[3] =		{1.0, 1.0, 1.0};
 GLfloat black[3] =		{1.0, 1.0, 1.0};
 GLfloat col1[3] =		{1.0, 1.0, 0.0};
 GLfloat col2[3] =		{1.0, 0.0, 1.0};
 GLfloat col3[3] =		{0.0, 1.0, 1.0};
 
+//atomic volume
+GLdouble oxy_wt = 0.85714285714;
+GLdouble nit_wt = 0.92857142857;
+GLdouble phosp_wt = 1.42857142857;
+GLdouble carb_wt = 1;
+GLdouble hydro_wt = 0.35714285714;
+GLdouble multiplicative_factor = 1;
 
 /* Prototypes */
 void liaison(GLfloat color[3], GLfloat height);
@@ -200,6 +208,20 @@ void atome(GLfloat color[3])
 	
 	//Création de la sphere
 	gluSphere(myQuad , sphereRadius , slices , stacks);
+}
+
+void space_atom(GLfloat color[3], GLdouble radius){
+	
+	//sans lumière:
+	glColor3fv(color);
+	//avec lumière
+	setLightColor(color);
+	
+	GLUquadric *myQuad;
+	myQuad=gluNewQuadric();
+	
+	//Création de la sphere
+	gluSphere(myQuad , radius , slices , stacks);
 }
 
 void setLightColor(GLfloat light_color[3])
@@ -435,37 +457,55 @@ void buildDisplayList()
 	glPushMatrix();
 	
 	// Begin drawing
-	glPushMatrix();
-	glTranslatef(0, 0, 0);
-	atome(carbon);
-	glPopMatrix();
-	
-	glPushMatrix();
-	glTranslatef(0, -1, 1.5);
-	atome(hydrogen);
-	glPopMatrix();
-	
-	glPushMatrix();
-	glTranslatef(-1, -1, -1);
-	atome(hydrogen);
-	glPopMatrix();
-	
-	glPushMatrix();
-	glTranslatef(1.3, -1, -0.3);
-	atome(hydrogen);
-	glPopMatrix();
-	
-	glPushMatrix();
-	glTranslatef(0, 1.5, 0);
-	atome(hydrogen);
-	glPopMatrix();
-	
-	// links
-	renderCylinder(0, 0, 0, 0, -1, 1.5, cylinderRadius, myQuad);
-	renderCylinder(0, 0, 0, -1, -1, -1, cylinderRadius, myQuad);
-	renderCylinder(0, 0, 0, 1.3, -1, -0.3, cylinderRadius, myQuad);
-	renderCylinder(0, 0, 0, 0, 1.5, 0, cylinderRadius, myQuad);
-	
+	char atomeType_space;
+	GLfloat x_space;
+	GLfloat y_space;
+	GLfloat z_space;
+
+	int nbElements = data_limit;
+
+	//for every elements, push, draw, pop
+	for (int i = 0; i < nbElements; i++)
+	{
+		atomeType_space = data[i].type;
+		x_space = data[i].x;
+		y_space = data[i].y;
+		z_space = data[i].z;
+		
+		//cout << atomeType << " " << x << " "  << y << " " << z << endl ;
+		//cout << nbElements;
+		
+		glPushMatrix();
+
+		glTranslatef(x_space, y_space, z_space);
+		GLdouble temp;
+		switch (atomeType_space)
+		{
+		case 'O':
+			temp = oxy_wt * multiplicative_factor;
+			space_atom(oxygen, temp);
+			break;
+		case 'N':
+			temp = nit_wt * multiplicative_factor;
+			space_atom(nitrogen, temp);
+			break;
+		case 'P':
+			temp = phosp_wt * multiplicative_factor;
+			space_atom(phosphate, temp);
+			break;
+		case 'C':
+			temp = carb_wt * multiplicative_factor;
+			space_atom(carbon, temp);
+			break;
+		case 'H':
+			temp = hydro_wt * multiplicative_factor;
+			space_atom(hydrogen, temp);
+			break;
+		default:
+			break;
+		}
+		glPopMatrix();
+	}
 	// End drawing
 	
 	glPopMatrix();
@@ -482,8 +522,6 @@ void buildDisplayList()
 	GLfloat x;
 	GLfloat y;
 	GLfloat z;
-
-	int nbElements = data_limit;
 
 	//for every elements, push, draw, pop
 	for (int i = 0; i < nbElements; i++)
@@ -592,8 +630,8 @@ void initMenu()
 	//Création des menus et appel des callback
 	glutCreateMenu(options_menu);
 	glutAddMenuEntry("Molecule H2O", 1);
-	glutAddMenuEntry("Molecule CH4", 2);	
-	glutAddMenuEntry("caffeine.xyz File!", 3);
+	glutAddMenuEntry("Space Filling Model", 2);	
+	glutAddMenuEntry("Ball and Stick Model~", 3);
 	glutAddMenuEntry("Toggle LightEffect", 4);
 	glutAddMenuEntry("Toggle Axis", 5);
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
