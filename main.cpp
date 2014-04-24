@@ -14,15 +14,22 @@
 
 using namespace std;
 
-int bond_limit;
-int data_limit;
+int bond_limit;	// number of enteries in the bonds list 
+int data_limit;	// number of enteries in the atoms list
+
 typedef struct Bonds{
+	/*
+	 * Structure for storing bonds 
+	 */
 	string id1;
 	string id2;
 	int no_bond;
 }Bonds;
 
 typedef struct Elements{
+	/*
+	 * Structure for storing coordinates of atoms
+	 */
 string id;
 char type;
 GLfloat x;
@@ -30,8 +37,8 @@ GLfloat y;
 GLfloat z;
 }Elements;
 
-Bonds* bonds = new Bonds[1000];
-Elements* data = new Elements[1000];
+Bonds* bonds = new Bonds[1000];	// Array of bonds 
+Elements* data = new Elements[1000];	// array of atoms 
 
 
 /* Global Variables (Configs) */
@@ -62,21 +69,24 @@ GLfloat carbon[3] =		{0.5, 0.5, 0.5};	// (C - Grey)
 GLfloat hydrogen[3] =	{0.0, 1.0, 0.0};	// (H - Green)
 GLfloat white[3] =		{1.0, 1.0, 1.0};
 GLfloat black[3] =		{1.0, 1.0, 1.0};
-GLfloat col1[3] =		{1.0, 1.0, 0.0};
-GLfloat col2[3] =		{1.0, 0.0, 1.0};
-GLfloat col3[3] =		{0.0, 1.0, 1.0};
+GLfloat col1[3] =		{1.0, 1.0, 0.0};	//yellow
+GLfloat col2[3] =		{1.0, 0.0, 1.0};	//magenta
+GLfloat col3[3] =		{0.0, 1.0, 1.0};	//cyan
 
 //atomic volume
-GLdouble oxy_wt = 0.85714285714;
+/*
+ * Took atomic radius of all the atoms and divided the (atoms_radius)^3/(carbon_radius)^3
+ */
+GLdouble oxy_wt = 0.85714285714;	
 GLdouble nit_wt = 0.92857142857;
 GLdouble phosp_wt = 1.42857142857;
 GLdouble carb_wt = 1;
 GLdouble hydro_wt = 0.35714285714;
-GLdouble multiplicative_factor = 1;
+GLdouble multiplicative_factor = 1.1;
 
 /* Prototypes */
 void liaison(GLfloat color[3], GLfloat height);
-void atome(GLfloat color[3]);
+void atom(GLfloat color[3]);
 void setLightColor(GLfloat light_color[3]);
 void renderCylinder(float x1, float y1, float z1, float x2,float y2, float z2, float radius, GLUquadricObj *quadrilc);
 void drawAxis();
@@ -98,8 +108,8 @@ int wd;                   /* GLUT window handle */
  as we haven't created a GLUT window yet */
 void init(void)
 {
-	width  = 1280.0;                 /* initial window width and height, */
-	height = 800.0;                  /* within which we draw. */
+	width  = 1366.0;                 /* initial window width and height, */
+	height = 768.0;                  /* within which we draw. */
 }
 
 // Called when window is resized,
@@ -196,7 +206,7 @@ void liaison(GLfloat color[3], GLfloat height)
 }
 
 //Sphere
-void atome(GLfloat color[3])
+void atom(GLfloat color[3])
 {
 	//sans lumière:
 	glColor3fv(color);
@@ -212,15 +222,15 @@ void atome(GLfloat color[3])
 
 void space_atom(GLfloat color[3], GLdouble radius){
 	
-	//sans lumière:
+	//set color
 	glColor3fv(color);
-	//avec lumière
+	//set light
 	setLightColor(color);
 	
 	GLUquadric *myQuad;
 	myQuad=gluNewQuadric();
 	
-	//Création de la sphere
+	//create a circle
 	gluSphere(myQuad , radius , slices , stacks);
 }
 
@@ -418,17 +428,17 @@ void buildDisplayList()
 	// molecules
 	glPushMatrix();
 	glTranslatef(-1, 0, 0);
-	atome(oxygen);
+	atom(oxygen);
 	glPopMatrix();
 	
 	glPushMatrix();
 	glTranslatef(0, -.5, 0);
-	atome(hydrogen);
+	atom(hydrogen);
 	glPopMatrix();
 	
 	glPushMatrix();
 	glTranslatef(1, 0, 0);
-	atome(oxygen);
+	atom(oxygen);
 	glPopMatrix();
 	
 	// links
@@ -451,13 +461,13 @@ void buildDisplayList()
 	glPopMatrix();
 	glEndList();
 	
-	// 2nd molecule (CH4 tethra)
+	// Space Filling Model
 	id++;
 	glNewList( id, GL_COMPILE );
 	glPushMatrix();
 	
 	// Begin drawing
-	char atomeType_space;
+	char atomType_space;
 	GLfloat x_space;
 	GLfloat y_space;
 	GLfloat z_space;
@@ -467,19 +477,19 @@ void buildDisplayList()
 	//for every elements, push, draw, pop
 	for (int i = 0; i < nbElements; i++)
 	{
-		atomeType_space = data[i].type;
+		atomType_space = data[i].type;
 		x_space = data[i].x;
 		y_space = data[i].y;
 		z_space = data[i].z;
 		
-		//cout << atomeType << " " << x << " "  << y << " " << z << endl ;
+		//cout << atomType << " " << x << " "  << y << " " << z << endl ;
 		//cout << nbElements;
 		
 		glPushMatrix();
 
 		glTranslatef(x_space, y_space, z_space);
 		GLdouble temp;
-		switch (atomeType_space)
+		switch (atomType_space)
 		{
 		case 'O':
 			temp = oxy_wt * multiplicative_factor;
@@ -518,7 +528,7 @@ void buildDisplayList()
 	
 	// Begin drawing
 	
-	char atomeType;
+	char atomType;
 	GLfloat x;
 	GLfloat y;
 	GLfloat z;
@@ -526,33 +536,33 @@ void buildDisplayList()
 	//for every elements, push, draw, pop
 	for (int i = 0; i < nbElements; i++)
 	{
-		atomeType = data[i].type;
+		atomType = data[i].type;
 		x = data[i].x;
 		y = data[i].y;
 		z = data[i].z;
 		
-		//cout << atomeType << " " << x << " "  << y << " " << z << endl ;
+		//cout << atomType << " " << x << " "  << y << " " << z << endl ;
 		//cout << nbElements;
 		
 		glPushMatrix();
 
 		glTranslatef(x, y, z);
-		switch (atomeType)
+		switch (atomType)
 		{
 		case 'O':
-			atome(oxygen);
+			atom(oxygen);
 			break;
 		case 'N':
-			atome(nitrogen);
+			atom(nitrogen);
 			break;
 		case 'P':
-			atome(phosphate);
+			atom(phosphate);
 			break;
 		case 'C':
-			atome(carbon);
+			atom(carbon);
 			break;
 		case 'H':
-			atome(hydrogen);
+			atom(hydrogen);
 			break;
 		default:
 			break;

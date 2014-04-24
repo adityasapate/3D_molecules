@@ -1,0 +1,195 @@
+\documentclass{report}
+\usepackage{wasysym}
+\usepackage{fullpage}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\graphicspath{ {images/} }
+\setlength{\marginparwidth}{1.2in}
+\let\oldmarginpar\marginpar
+\renewcommand\marginpar[1]{\-\oldmarginpar[\raggedleft #1]%
+{\raggedright #1}}    
+
+\newenvironment{checklist}{%
+  \begin{list}{}{}% whatever you want the list to be
+  \let\olditem\item
+  \renewcommand\item{\olditem -- \marginpar{$\Box$} }
+  \newcommand\checkeditem{\olditem -- \marginpar{$\CheckedBox$} }
+}{%
+  \end{list}
+}   
+\begin{document}
+\begin{titlepage}
+\begin{center}
+
+% Upper part of the page. The '~' is needed because \\
+% only works if a paragraph has started.
+\includegraphics[width=0.15\textwidth]{/home/aditya/Desktop/screen.png}~\\[1cm]
+
+\textsc{\LARGE IIT MADRAS}\\[1.5cm]
+
+\textsc{\Large GROUP 12}\\[0.5cm]
+
+% Title
+\HRule \\[0.4cm]
+{ \huge \bfseries Chemical Formula Visualizer\\[0.4cm] }
+
+\HRule \\[1.5cm]
+
+% Author and supervisor
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Author:}\\
+Aditya \textsc{Sapate (CS10B031)}\\
+Kalyan \textsc{Kumar (CS10BOO5)}\\
+Kodali \textsc{Praveen (CS10B014)}\\
+\end{flushleft}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Supervisor:} \\
+Dr.~Sukhendu \textsc{Das}
+\end{flushright}
+\end{minipage}
+
+\vfill
+
+% Bottom of the page
+{\large \today}
+
+\end{center}
+\end{titlepage}
+
+
+
+\section*{Problem Statement:}
+Biomolecules, such as proteins and nucleic acids (DNA and RNA), are involved
+in every aspect of cellular function. Often times, understanding their structure
+is key to understanding their function. In the past, crystallographers and
+biologists created detailed real-world models, called Corey- Pauling-Koltun
+models, using wooden or synthetic spheres to represent atoms and sticks to
+represent bonds. Today, these models of protein structures, referred to as
+space-filling and ball-stick models, have been adopted in computer graphics
+systems to create visual representations.\\
+Your job is as follows:\\
+\textbf{Input:}
+A Chemical Formula eg. C6 H12 (Cyclohexane).\\
+\textbf{Output:}
+\begin{checklist}
+  \checkeditem   Visualize it using ball-stick models.
+  \checkeditem   Visualize it using Space filled models.
+  \checkeditem   Your demo should produce smooth edges around the intersection of spheres and cylinders
+  \checkeditem   control view angle at different zoom level.
+\end{checklist}
+\section*{Packages Required:}
+\begin{itemize}
+\item OpenGL/Glut \\
+\textit{$\#$  sudo apt-get install freeglut3 freeglut3-dev}
+\item biniutils-gold (for the linker)\\
+\textit{$\#$  sudo apt-get install binutils-gold}
+\item RDKIT ( for translating .smi files to .mol files)\\
+\textit{$\#$  sudo apt-get install rdkit$*$}
+\item OPEN BABEL (for translating the code from .mol to .cml files\\
+\textit{$\#$ sudo apt-get install openbabel}
+\
+\end{itemize}
+\section*{Color Scheme:}
+
+\begin{enumerate}
+  \item Atoms
+  \begin{itemize}
+  	\item	Oxygen		(O)		Red
+  	\item	Nitrogen		(N)		Blue
+  	\item	Phosphorous	(P)		Orange
+  	\item	Carbon		(C)		Grey
+  	\item	Hydrogen 	(H)		Green
+  \end{itemize}
+  \item Bonds 
+  \begin{itemize}
+  	\item	Single Bond 	= Yellow
+  	\item	Double Bond 	= Magenta 
+  	\item	Triple Bond = Cyan
+  \end{itemize}
+\end{enumerate}
+
+\section*{Implementation:}
+\subsection*{Input compound conversion}
+We tried many ways to take molecules in IUPAC representation as input. Somehow we were not able to bridge the gap between IUPAC names and spatial representation of the molecules.
+So we went through various file formats to represent chemical compounds. .smi(SMILES) format was the one which seemed favourable as it could be converted to .mol format thus giving us the spatial locations of the atoms\textit{(using rdkit)}.\\
+\\
+Now the second challenge was that now we had the spatial location of molecules but no clue which molecules formed the bond. So we went a step further. We converted .mol format into .cml format .. thus getting both atomic locations and bonds amongst compounds \textit{(using openbabel)}.
+
+\subsection*{Initializations}
+Basic Initializations like creating a window, defining the functions for mouse and keyboard interrupts, setting illumination options like lighting, POV, etc ..... 
+
+\subsection*{Parsing of $.$cml file}
+cml file is a sort of xml file which contains all the atomic location of elements and all the bond angles.
+We created 2 data structures to store all this vital information in the program itself
+\begin{itemize}
+\item	\textbf{Bonds:} for storing all the values concerning bonds like single/double/triple bond, atom id amongst which bond is present.
+\item	\textbf{Elements:} for storing all the location coordinates of each of the atoms with their id.
+\end{itemize}
+\subsection*{Ball-Stick Model}
+\begin{enumerate}
+\item	Draw the atoms at the corresponding location
+\item	Using bonds in the molecules, we connected the atoms  using a cylinder.
+\end{enumerate}
+\subsection*{Space-Filling Model}
+\begin{enumerate}
+
+
+\item We used the radius of each atoms and cubed them as \\
+volume $\propto$ ( radius )$^3$
+\item Now as a reference we divided all the (radius)$^3$ by the value of (carbon\_radius)$^3$ as a reference
+\item We multiplied the quotient of this computation with a multiplier (determined by trial and error ) for scaling.
+\end{enumerate}
+\section*{Sample Outputs:}
+\textbf{Benzene}\\
+\includegraphics[width=5cm, height=4cm]{/home/aditya/Pictures/benzene.png}
+\includegraphics[width=5cm, height=4cm]{/home/aditya/Pictures/benzene2.png}
+\includegraphics[width=5cm, height=4cm]{/home/aditya/Pictures/benzene3.png}\\
+\textbf{Caffeine C$_8$H$_10$N$_4$O$_2$}\\
+\includegraphics[width=5cm, height=4cm]{/home/aditya/Pictures/caffeine.png}
+\includegraphics[width=5cm, height=4cm]{/home/aditya/Pictures/caffeine1.png}
+\includegraphics[width=5cm, height=4cm]{/home/aditya/Pictures/caffeine2.png}\\
+\textbf{Ethanol}\\
+\includegraphics[width=5cm, height=4cm]{/home/aditya/Pictures/ethanol.png}
+\includegraphics[width=5cm, height=4cm]{/home/aditya/Pictures/ethanol1.png}
+\includegraphics[width=5cm, height=4cm]{/home/aditya/Pictures/ethanol2.png}\\
+\textbf{A molecule with more than 9 rings, Cephalostatin-1 (C$_54$H$_74$N$_2$O$_10$)}\\
+\includegraphics[width=5cm, height=4cm]{/home/aditya/Pictures/bigmol.png}
+\includegraphics[width=5cm, height=4cm]{/home/aditya/Pictures/bigmol3.png}
+\includegraphics[width=5cm, height=4cm]{/home/aditya/Pictures/bigmol1.png}\\
+\\
+
+\section*{Abbreviations:}
+\begin{itemize}
+	\item	\textbf{sml: Simplified Molecular Input Line Entry Specification (SMILES)}\\
+	SMILES strings include connectivity but do not include 2D or 3D coordinates.\\
+\textbf{ Sample SMILES format}\\
+\begin{tabular}{|c|c|c|}
+\hline 
+\textbf{Name} & \textbf{Formula} & \textbf{SMILES string} \\ 
+\hline 
+Methane & CH$_4$ & C \\ 
+\hline 
+Ethanol & C$_2$H$_6$O & CCO\\ 
+\hline 
+Benzene & C$_6$H$_6$ & C1=CC=CC=C1 or c1ccccc1\\ 
+\hline 
+Ethylene & C$_2$H$_4$& C=C\\ 
+\hline 
+\end{tabular} 
+	\item	\textbf{cml: Chemical Markup Language}\\Chemical Markup Language (CML) is an open standard for representing molecular and other chemical data.
+	\item	\textbf{mol: Molfile}\\
+	An MDL Molfile is a file format created by MDL for holding information about the atoms, bonds, connectivity and coordinates of a molecule.
+\end{itemize}
+
+\section*{References:}
+\url{http://www.opengl.org/documentation/}\\
+\url{http://en.wikipedia.org/wiki/Chemical_file_format}\\
+\url{http://rdkit.org/docs/}\\
+\url{http://openbabel.org/docs/2.3.1/index.html}\\
+
+
+\end{document}

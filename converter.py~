@@ -4,7 +4,7 @@ import sys
 
 
 
-x = Chem.MolFromSmiles('C#C')
+x = Chem.MolFromSmiles('CCO')
 
 x = Chem.AddHs(x)
 AllChem.Compute2DCoords(x)
