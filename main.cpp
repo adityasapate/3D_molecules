@@ -193,30 +193,30 @@ int main(int argc, char *argv[])
 
 void liaison(GLfloat color[3], GLfloat height)
 {
-	//sans lumière:
+	
 	glColor3fv(color);
-	//avec lumière
+	
 	setLightColor(color);
 	
 	GLUquadric *myQuad;
 	myQuad=gluNewQuadric();
 	
-	//Création du cylindre
+	//Create the cylinder
 	gluCylinder(myQuad, cylinderRadius, cylinderRadius, height, slices, stacks);
 }
 
 //Sphere
 void atom(GLfloat color[3])
 {
-	//sans lumière:
+	
 	glColor3fv(color);
-	//avec lumière
+	
 	setLightColor(color);
 	
 	GLUquadric *myQuad;
 	myQuad=gluNewQuadric();
 	
-	//Création de la sphere
+	//Create the sphere
 	gluSphere(myQuad , sphereRadius , slices , stacks);
 }
 
@@ -285,17 +285,17 @@ void renderCylinder(float x1, float y1, float z1, float x2,float y2, float z2, f
 void drawAxis()
 {
 	
-	float originAxis[3] = {0,0,0};	//Origine
-	float xAxis[3] = {1, 0, 0};		// L'axe des x
-	float yAxis[3] = {0, 1, 0};		// L'axe des y
-	float zAxis[3] = {0, 0, 1};		// L'axe des z
+	float originAxis[3] = {0,0,0};	//Origin
+	float xAxis[3] = {1, 0, 0};		// X axis 
+	float yAxis[3] = {0, 1, 0};		// Y axis
+	float zAxis[3] = {0, 0, 1};		// Z axis 
 	
-	//Temp: Désactivation de la lumière
+
 	glDisable(GL_LIGHTING);  
 	glPushMatrix ();
 	glLineWidth (10.0);
 	
-	//x = rouge, y = vert, z = bleu
+	
 	
 	glBegin (GL_LINES);
 	glColor3f(1.0, 0.0, 0.0);
@@ -310,7 +310,7 @@ void drawAxis()
 	glEnd();
 	
 	glPopMatrix ();
-	//Réactivation de la lumière
+	
 	glEnable(GL_LIGHTING);
 }
 

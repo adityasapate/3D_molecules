@@ -1,0 +1,17 @@
+Compiling of the code:
+
+Open "converter.py" file in this folder
+Paste the smiles formula of the code in the given space
+Before running the code, refer to the packages section of the REPORT
+Compile and run the code using command "./run.sh"
+
+References:
+
+References are provided at the end of the REPORT
+
+Known bugs:
+
+None that I know of
+
+
+

@@ -112,6 +112,19 @@ A Chemical Formula eg. C6 H12 (Cyclohexane).\\
   \end{itemize}
 \end{enumerate}
 
+\section*{Flow Structure:}
+\textbf{Input: SMILES formula of a given chemical formula\\
+Output: 3-D structral drawing of the chemical formula} \\
+
+\fbox{SMILES formula $\mapsto$ MOL formula $\mapsto$ CML file $\mapsto$ 3-D structural mapping}
+
+\subsection*{Location of the files generated:}
+\textbf{SMILES formula:} Entered as input in the "converter.py" file.\\
+\textbf{.mol file:} Stored in file "./data/temp.mol" using "rdkit package"\\
+\textbf{.cml file:} Stored in "./output.cml" file using "obabel package"\\
+\textbf{3-D formula:} Output is shown on the screen after compiling and running the code using "./run.sh"
+
+
 \section*{Implementation:}
 \subsection*{Input compound conversion}
 We tried many ways to take molecules in IUPAC representation as input. Somehow we were not able to bridge the gap between IUPAC names and spatial representation of the molecules.
@@ -190,6 +203,7 @@ Ethylene & C$_2$H$_4$& C=C\\
 \url{http://en.wikipedia.org/wiki/Chemical_file_format}\\
 \url{http://rdkit.org/docs/}\\
 \url{http://openbabel.org/docs/2.3.1/index.html}\\
+\url{http://lifeofaprogrammergeek.blogspot.in/2008/07/rendering-cylinder-between-two-points.html}\\
 
 
 \end{document}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.1.26)  24 APR 2014 18:27
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.1.26)  5 MAY 2014 01:48
 entering extended mode
  %&-line parsing enabled.
 **REPORT.tex
@@ -241,7 +241,7 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 86.
 
-Underfull \hbox (badness 10000) in paragraph at lines 117--121
+Underfull \hbox (badness 10000) in paragraph at lines 117--118
 
  []
 
@@ -249,106 +249,116 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.121 
-       [1]
+l.119 ...ML file $\mapsto$ 3-D structural mapping}
+                                                   [1]
+Underfull \hbox (badness 10000) in paragraph at lines 130--134
+
+ []
+
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 125.
+(Font)              <12> on input line 138.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 125.
+(Font)              <8> on input line 138.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 125.
- </home/aditya/Pictures/benzene.png, id=28, 1371.1225pt x 770.88pt>
+(Font)              <6> on input line 138.
+[2] </home/aditya/Pictures/benzene.png, id=42, 1371.1225pt x 770.88pt>
 File: /home/aditya/Pictures/benzene.png Graphic file (type png)
 
 <use /home/aditya/Pictures/benzene.png>
-</home/aditya/Pictures/benzene2.png, id=29, 1371.1225pt x 770.88pt>
+</home/aditya/Pictures/benzene2.png, id=43, 1371.1225pt x 770.88pt>
 File: /home/aditya/Pictures/benzene2.png Graphic file (type png)
 
 <use /home/aditya/Pictures/benzene2.png>
-</home/aditya/Pictures/benzene3.png, id=30, 1371.1225pt x 770.88pt>
+</home/aditya/Pictures/benzene3.png, id=44, 1371.1225pt x 770.88pt>
 File: /home/aditya/Pictures/benzene3.png Graphic file (type png)
 
 <use /home/aditya/Pictures/benzene3.png>
-</home/aditya/Pictures/caffeine.png, id=31, 1371.1225pt x 770.88pt>
+</home/aditya/Pictures/caffeine.png, id=45, 1371.1225pt x 770.88pt>
 File: /home/aditya/Pictures/caffeine.png Graphic file (type png)
 
 <use /home/aditya/Pictures/caffeine.png>
-</home/aditya/Pictures/caffeine1.png, id=32, 1371.1225pt x 770.88pt>
+</home/aditya/Pictures/caffeine1.png, id=46, 1371.1225pt x 770.88pt>
 File: /home/aditya/Pictures/caffeine1.png Graphic file (type png)
 
 <use /home/aditya/Pictures/caffeine1.png>
-</home/aditya/Pictures/caffeine2.png, id=33, 1371.1225pt x 770.88pt>
+</home/aditya/Pictures/caffeine2.png, id=47, 1371.1225pt x 770.88pt>
 File: /home/aditya/Pictures/caffeine2.png Graphic file (type png)
 
 <use /home/aditya/Pictures/caffeine2.png>
-</home/aditya/Pictures/ethanol.png, id=34, 1371.1225pt x 770.88pt>
+</home/aditya/Pictures/ethanol.png, id=48, 1371.1225pt x 770.88pt>
 File: /home/aditya/Pictures/ethanol.png Graphic file (type png)
 
 <use /home/aditya/Pictures/ethanol.png>
-</home/aditya/Pictures/ethanol1.png, id=35, 1371.1225pt x 770.88pt>
+</home/aditya/Pictures/ethanol1.png, id=49, 1371.1225pt x 770.88pt>
 File: /home/aditya/Pictures/ethanol1.png Graphic file (type png)
 
 <use /home/aditya/Pictures/ethanol1.png>
-</home/aditya/Pictures/ethanol2.png, id=36, 1371.1225pt x 770.88pt>
+</home/aditya/Pictures/ethanol2.png, id=50, 1371.1225pt x 770.88pt>
 File: /home/aditya/Pictures/ethanol2.png Graphic file (type png)
 
 <use /home/aditya/Pictures/ethanol2.png>
-</home/aditya/Pictures/bigmol.png, id=37, 1371.1225pt x 770.88pt>
+</home/aditya/Pictures/bigmol.png, id=51, 1371.1225pt x 770.88pt>
 File: /home/aditya/Pictures/bigmol.png Graphic file (type png)
 
 <use /home/aditya/Pictures/bigmol.png>
-</home/aditya/Pictures/bigmol3.png, id=38, 1371.1225pt x 770.88pt>
+</home/aditya/Pictures/bigmol3.png, id=52, 1371.1225pt x 770.88pt>
 File: /home/aditya/Pictures/bigmol3.png Graphic file (type png)
 
 <use /home/aditya/Pictures/bigmol3.png>
-</home/aditya/Pictures/bigmol1.png, id=39, 1371.1225pt x 770.88pt>
+</home/aditya/Pictures/bigmol1.png, id=53, 1371.1225pt x 770.88pt>
 File: /home/aditya/Pictures/bigmol1.png Graphic file (type png)
 
 <use /home/aditya/Pictures/bigmol1.png>
-Underfull \hbox (badness 10000) in paragraph at lines 147--164
+Underfull \hbox (badness 10000) in paragraph at lines 160--177
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 147--164
+Underfull \hbox (badness 10000) in paragraph at lines 160--177
 
  []
 
-[2] [3 </home/aditya/Pictures/benzene.png (PNG copy)> </home/aditya/Pictures/be
-nzene2.png (PNG copy)> </home/aditya/Pictures/benzene3.png (PNG copy)> </home/a
-ditya/Pictures/caffeine.png (PNG copy)> </home/aditya/Pictures/caffeine1.png (P
-NG copy)> </home/aditya/Pictures/caffeine2.png (PNG copy)> </home/aditya/Pictur
-es/ethanol.png (PNG copy)> </home/aditya/Pictures/ethanol1.png (PNG copy)> </ho
-me/aditya/Pictures/ethanol2.png (PNG copy)> </home/aditya/Pictures/bigmol.png (
-PNG copy)> </home/aditya/Pictures/bigmol3.png (PNG copy)> </home/aditya/Picture
-s/bigmol1.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 189--193
+[3 </home/aditya/Pictures/benzene.png (PNG copy)> </home/aditya/Pictures/benzen
+e2.png (PNG copy)> </home/aditya/Pictures/benzene3.png (PNG copy)> </home/adity
+a/Pictures/caffeine.png (PNG copy)> </home/aditya/Pictures/caffeine1.png (PNG c
+opy)> </home/aditya/Pictures/caffeine2.png (PNG copy)> </home/aditya/Pictures/e
+thanol.png (PNG copy)> </home/aditya/Pictures/ethanol1.png (PNG copy)> </home/a
+ditya/Pictures/ethanol2.png (PNG copy)>]
+Overfull \hbox (9.99081pt too wide) in paragraph at lines 202--207
+[]$\OT1/cmtt/m/n/10 http : / / lifeofaprogrammergeek . blogspot . in / 2008 / 0
+7 / rendering-[]cylinder-[]between-[]two-[]points . html$[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 202--207
 
  []
 
-[4] (./REPORT.aux) ) 
+[4 </home/aditya/Pictures/bigmol.png (PNG copy)> </home/aditya/Pictures/bigmol3
+.png (PNG copy)> </home/aditya/Pictures/bigmol1.png (PNG copy)>] (./REPORT.aux)
+ ) 
 Here is how much of TeX's memory you used:
- 4474 strings out of 495061
- 65390 string characters out of 1182621
- 133530 words of memory out of 3000000
+ 4476 strings out of 495061
+ 65412 string characters out of 1182621
+ 132530 words of memory out of 3000000
  7561 multiletter control sequences out of 15000+50000
  11549 words of font info for 42 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 38i,7n,24p,315b,361s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cm
-bx10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></
-usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/
-texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-texli
-ve/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/typ
-e1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/am
-sfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cms
-y10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb></u
-sr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/te
-xmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-texlive
-/fonts/type1/public/wasy/wasy10.pfb>
-Output written on REPORT.pdf (5 pages, 1848729 bytes).
+ 38i,7n,24p,315b,378s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-te
+xlive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texmf-texlive/font
+s/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-texlive/fonts/type1/pub
+lic/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts
+/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb
+></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/shar
+e/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-tex
+live/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-texlive/fonts/
+type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-texlive/fonts/type1/publi
+c/wasy/wasy10.pfb>
+Output written on REPORT.pdf (5 pages, 1852603 bytes).
 PDF statistics:
- 116 PDF objects out of 1000 (max. 8388607)
- 24 named destinations out of 1000 (max. 500000)
+ 120 PDF objects out of 1000 (max. 8388607)
+ 26 named destinations out of 1000 (max. 500000)
  66 words of extra memory for PDF output out of 10000 (max. 10000000)
 
